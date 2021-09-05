@@ -1,10 +1,10 @@
 var tela;
 var bloco1,bloco2,bloco3,bloco4;
 var bola, bordas;
-var musica;
+var music;
 
 function preload(){
-    musica = loadSound("music.mp3");
+    music = loadSound("music.mp3");
 }
 
 
@@ -18,10 +18,10 @@ function setup(){
     bloco2.shapeColor = "orange";
 
     bloco3 = createSprite(515,580,200,30);
-    bloco3.shapeColor = "hotpink";
+    bloco3.shapeColor = "red";
 
     bloco4 = createSprite(740,580,220,30);
-    bloco4.shapeColor = "yellowgreen";
+    bloco4.shapeColor = "green";
 
     bola = createSprite(random(20,750),100, 40,40);
     bola.shapeColor = rgb(255,255,255);
@@ -37,23 +37,22 @@ function draw() {
 
     if(bloco1.isTouching(bola) && bola.bounceOff(bloco1)){
         bola.shapeColor = "blue";
+        music.play();
     }
 
     if(bloco2.isTouching(bola)){
         bola.shapeColor = "orange";
         bola.velocityX = 0;
         bola.velocityY = 0;
-        musica.stop();
+        music.stop();
     }
 
     if(bloco3.isTouching(bola) && bola.bounceOff(bloco3)){
-        bola.shapeColor = "hotpink";
-        
+        bola.shapeColor = "red";
     }
 
     if(bloco4.isTouching(bola) && bola.bounceOff(bloco4)){
-        bola.shapeColor = "yellowgreen";
-        musica.play();
+        bola.shapeColor = "green";
     }
 
     drawSprites();
